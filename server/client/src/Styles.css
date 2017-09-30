@@ -1,0 +1,55 @@
+/* Wrapper for sticky footer  */
+.page-flexbox-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* ****************************************************** */
+
+.logo-header {
+  margin-left: 40px;
+}
+
+.nav-links {
+  margin-right: 40px;
+}
+
+/* ****************************************************** */
+
+/* <footer> element  */
+.page-footer {
+  color: #000000;
+}
+
+/* "About" | "Connect" footer headers */
+.page-footer h6 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Footer text and external links */
+.page-footer p,
+.page-footer a {
+  font-size: 14px;
+}
+
+/* <ul> element with all external links */
+.footer-links a {
+  color: #000000;
+}
+
+.footer-links a:hover,
+.footer-copyright a:hover {
+  color: #2727bd;
+}
+
+/* Copyright and "View Project on GitHub" */
+.footer-copyright div,
+.footer-copyright a {
+  color: #000000;
+}

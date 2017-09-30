@@ -30,7 +30,7 @@ class Header extends Component {
         <nav>
           <div className="nav-wrapper teal lighten-2">
             <Link to="/" className="left brand-logo logo-header">
-              PokeUtility
+              Parking Finder
             </Link>
 
             <ul className="right nav-links">{this.renderNavContent()}</ul>

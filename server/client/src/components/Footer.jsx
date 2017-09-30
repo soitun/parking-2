@@ -7,8 +7,8 @@ const Footer = () => {
         <div className="row">
           <div className="col l6 s12">
             <h6>About</h6>
-            <p>By Ernesto Rodriguez</p>
-            <p>GitHub Space is not affiliated with GitHub, Inc. in any way.</p>
+            <p>By Contribs</p>
+            <p>Legal line.</p>
           </div>
 
           <div className="col l4 offset-l2 s12">
@@ -33,11 +33,8 @@ const Footer = () => {
 
       <div className="footer-copyright">
         <div className="container">
-          © 2017 GitHub Space
-          <a
-            className="right"
-            href="https://github.com/visionpoint/githubspace"
-          >
+          © 2017 App Name
+          <a className="right" href="https://github.com/visionpoint/parking">
             View Project on GitHub
           </a>
         </div>

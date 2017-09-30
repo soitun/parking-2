@@ -68,3 +68,7 @@ main {
 .footer-copyright a {
   color: #000000;
 }
+#map {
+  height: 500px;
+  width: 500px;
+}

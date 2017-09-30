@@ -23,7 +23,12 @@ const parkingSpotSchema = new Schema({
 
     endTime: {
         type: String
+    },
+    
+    booked: {
+        type: Boolean
     }
+
 });
 
-module.exports = router;
+mongoose.model("parkingspots", parkingSpotSchema);

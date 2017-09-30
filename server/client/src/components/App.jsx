@@ -1,10 +1,11 @@
 // App is responsible for all the view setup.
 
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { withRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actions from "../actions";
+import * as actionCreators from "../actions";
 import Header from "./Header";
+import CreateListing from "./CreateListing";
 import Landing from "./Landing";
 import Footer from "./Footer";
 
@@ -21,6 +22,7 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path="/" component={Landing} />
+            <Route exact path="/list-spot" component={CreateListing} />
             <Route render={() => <h3>Not Found</h3>} />
           </Switch>
         </main>
@@ -33,4 +35,4 @@ class App extends Component {
 
 // Now the Actions will be available as props inside of App:
 // this.props.actionName
-export default connect(null, actions)(App);
+export default withRouter(connect(null, actionCreators)(App));

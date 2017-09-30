@@ -16,11 +16,19 @@ class Header extends Component {
         );
 
       default:
-        return (
-          <li>
-            <a href="/api/logout">Log Out</a>
+        return [
+          <li key="0">
+            <Link to="/list-spot" className="nav-route">
+              List Spot
+            </Link>
+          </li>,
+
+          <li key="1">
+            <a href="/api/logout" className="nav-route">
+              Log Out
+            </a>
           </li>
-        );
+        ];
     }
   }
 

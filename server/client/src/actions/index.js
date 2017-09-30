@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_USER, CREATE_LISTING } from "./types";
+import { FETCH_USER, LISTING_CREATED, ALL_LISTINGS } from "./types";
 
 // Because we're returning a function from this Action Creator instead of
 // a normal Action, Redux Thunk will automatically call this function
@@ -16,12 +16,18 @@ export const fetchUser = () => {
 
 export const createListing = (lat, lng, price, startTime, endTime) => {
   const dataFromUser = { lat, lng, price, startTime, endTime };
-  console.log(dataFromUser);
 
   return async dispatch => {
     const res = await axios.post("/api/create_listing", dataFromUser);
-    console.log(res);
 
-    dispatch({ type: CREATE_LISTING, payload: res.data });
+    dispatch({ type: LISTING_CREATED, payload: res.data });
+  };
+};
+
+export const fetchListings = () => {
+  return async dispatch => {
+    const res = await axios.get("/api/listings");
+
+    dispatch({ type: ALL_LISTINGS, payload: res.data });
   };
 };

@@ -1,2 +1,3 @@
 export const FETCH_USER = "fetch_user";
-export const CREATE_LISTING = "create_listing";
+export const LISTING_CREATED = "listing_created";
+export const ALL_LISTINGS = "all_listings";

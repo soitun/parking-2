@@ -24,6 +24,12 @@ class Header extends Component {
           </li>,
 
           <li key="1">
+            <Link to="/dashboard" className="nav-route">
+              Dashboard
+            </Link>
+          </li>,
+
+          <li key="2">
             <a href="/api/logout" className="nav-route">
               Log Out
             </a>

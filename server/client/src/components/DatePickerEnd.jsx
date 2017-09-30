@@ -2,16 +2,12 @@ import React, { Component } from "react";
 import moment from "moment";
 import DatePicker from "react-datepicker";
 
-// fix css: this one comes after the amterial design one, so that's why
-// it's fucked uppppp
-import "react-datepicker/dist/react-datepicker.css";
-
-class DatePickerField extends Component {
+class DatePickerEnd extends Component {
   state = { startDate: moment() };
 
   handleChange = date => {
     this.setState({ startDate: date }, () => {
-      // console.log(this.state.startDate._d);
+      this.props.onEndTimeChange(this.state.startDate._d);
     });
   };
 
@@ -28,4 +24,4 @@ class DatePickerField extends Component {
   }
 }
 
-export default DatePickerField;
+export default DatePickerEnd;

@@ -19,6 +19,21 @@ main {
   margin-right: 40px;
 }
 
+.nav-route {
+  font-size: 20px;
+}
+
+/* ****************************************************** */
+
+/* Fixes for width issue with React Date Picker */
+.react-datepicker__input-container input {
+  width: 200px !important;
+}
+
+.react-datepicker__time-list li {
+  width: 75px !important;
+}
+
 /* ****************************************************** */
 
 /* <footer> element  */

@@ -14,8 +14,8 @@ export const fetchUser = () => {
   };
 };
 
-export const createListing = (address, price, startTime, endTime) => {
-  const dataFromUser = { address, price, startTime, endTime };
+export const createListing = (lat, lng, price, startTime, endTime) => {
+  const dataFromUser = { lat, lng, price, startTime, endTime };
   console.log(dataFromUser);
 
   return async dispatch => {

@@ -4,6 +4,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
+
 import DatePickerStart from "./DatePickerStart";
 import DatePickerEnd from "./DatePickerEnd";
 
@@ -20,13 +21,17 @@ class ListingForm extends Component {
     // set the state now for lat and long
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(data => this.setState({ lat: data.lat, lng: data.lng }))
+      .then(data =>
+        this.setState({ lat: data.lat, lng: data.lng }, () => {
+          this.props.updateCoords(this.state.lat, this.state.lng);
+        })
+      )
       .catch(err => console.log(err));
   };
 
   render() {
     const {
-      onAddressChange,
+      // onAddressChange,
       onPriceChange,
       onStartTimeChange,
       onEndTimeChange,
@@ -42,19 +47,13 @@ class ListingForm extends Component {
 
     return (
       <div className="container">
-        <PlacesAutocomplete
-          inputProps={inputProps}
-          onSelect={this.handleSelect}
-        />
-
         <form className="col s12">
           <div className="row">
             <div className="input-field col s8">
               <label htmlFor="address">Address</label>
-              <input
-                onChange={event => onAddressChange(event.target.value)}
-                id="address"
-                type="text"
+              <PlacesAutocomplete
+                inputProps={inputProps}
+                onSelect={this.handleSelect}
               />
             </div>
           </div>

@@ -6,14 +6,19 @@ import ListingForm from "./ListingForm";
 
 class CreateListing extends Component {
   state = {
-    address: "",
+    lat: null,
+    lng: null,
     price: null,
     startTime: null,
     endTime: null
   };
 
-  onAddressChange = inputValue => {
-    this.setState({ address: inputValue });
+  // onAddressChange = inputValue => {
+  //   this.setState({ address: inputValue });
+  // };
+
+  updateCoords = (lat, lng) => {
+    this.setState({ lat, lng });
   };
 
   onPriceChange = inputValue => {
@@ -30,7 +35,8 @@ class CreateListing extends Component {
 
   onSubmit = () => {
     this.props.createListing(
-      this.state.address,
+      this.state.lat,
+      this.state.lng,
       this.state.price,
       this.state.startTime,
       this.state.endTime
@@ -42,7 +48,7 @@ class CreateListing extends Component {
       <ListingForm
         onStartTimeChange={this.onStartTimeChange}
         onEndTimeChange={this.onEndTimeChange}
-        onAddressChange={this.onAddressChange}
+        updateCoords={this.updateCoords}
         onPriceChange={this.onPriceChange}
         onSubmit={this.onSubmit}
       />

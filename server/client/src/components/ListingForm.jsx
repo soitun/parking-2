@@ -1,15 +1,33 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import DatePickerField from "./DatePickerField";
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 import "react-datepicker/dist/react-datepicker.css";
 
 class ListingForm extends Component {
+  state = { address: '' }
+
+  handleOnSelect = (address) => {
+    this.setState({ address });
+
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+  }
+
   render() {
     const { onAddressChange, onPriceChange, onSubmit } = this.props;
 
+    const inputProps = {
+      value: this.state.address,
+      onChange: (address) => { this.setState({ address })}
+    }
+
     return (
       <div className="container">
+        <PlacesAutocomplete inputProps={inputProps} onSelect={this.handleOnSelect} />
         <form className="col s12">
           <div className="row">
             <div className="input-field col s8">

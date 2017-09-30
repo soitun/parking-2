@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng
+} from "react-places-autocomplete";
 import DatePickerStart from "./DatePickerStart";
 import DatePickerEnd from "./DatePickerEnd";
 
 class ListingForm extends Component {
-  state = { address: '', lat: null, lng: null }
+  state = { address: "", lat: null, lng: null };
 
   handleSelect = address => {
     this.setState({ address });
@@ -17,9 +20,9 @@ class ListingForm extends Component {
     // set the state now for lat and long
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(data => this.setState({ lat: data.lat, lng: data.lng }, () => {console.log(this.state.lat, this.state.lng)}))
-      .catch(err => console.log(err))
-  }
+      .then(data => this.setState({ lat: data.lat, lng: data.lng }))
+      .catch(err => console.log(err));
+  };
 
   render() {
     const {
@@ -32,13 +35,18 @@ class ListingForm extends Component {
 
     const inputProps = {
       value: this.state.address,
-      onChange: address => { this.setState({ address })}
-    }
+      onChange: address => {
+        this.setState({ address });
+      }
+    };
 
     return (
       <div className="container">
-        <PlacesAutocomplete inputProps={inputProps} onSelect={this.handleSelect} />
-        
+        <PlacesAutocomplete
+          inputProps={inputProps}
+          onSelect={this.handleSelect}
+        />
+
         <form className="col s12">
           <div className="row">
             <div className="input-field col s8">

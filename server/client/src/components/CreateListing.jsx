@@ -20,13 +20,28 @@ class CreateListing extends Component {
     this.setState({ price: inputValue });
   };
 
+  onStartTimeChange = date => {
+    this.setState({ startTime: date });
+  };
+
+  onEndTimeChange = date => {
+    this.setState({ endTime: date });
+  };
+
   onSubmit = () => {
-    this.props.createListing(this.state.address, this.state.price);
+    this.props.createListing(
+      this.state.address,
+      this.state.price,
+      this.state.startTime,
+      this.state.endTime
+    );
   };
 
   render() {
     return (
       <ListingForm
+        onStartTimeChange={this.onStartTimeChange}
+        onEndTimeChange={this.onEndTimeChange}
         onAddressChange={this.onAddressChange}
         onPriceChange={this.onPriceChange}
         onSubmit={this.onSubmit}

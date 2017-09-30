@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import DatePickerField from "./DatePickerField";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-
-import "react-datepicker/dist/react-datepicker.css";
+import DatePickerStart from "./DatePickerStart";
+import DatePickerEnd from "./DatePickerEnd";
 
 class ListingForm extends Component {
   state = { address: '', lat: null, lng: null }
@@ -23,7 +22,13 @@ class ListingForm extends Component {
   }
 
   render() {
-    const { onAddressChange, onPriceChange, onSubmit } = this.props;
+    const {
+      onAddressChange,
+      onPriceChange,
+      onStartTimeChange,
+      onEndTimeChange,
+      onSubmit
+    } = this.props;
 
     const inputProps = {
       value: this.state.address,
@@ -33,34 +38,33 @@ class ListingForm extends Component {
     return (
       <div className="container">
         <PlacesAutocomplete inputProps={inputProps} onSelect={this.handleSelect} />
+        
         <form className="col s12">
           <div className="row">
             <div className="input-field col s8">
+              <label htmlFor="address">Address</label>
               <input
                 onChange={event => onAddressChange(event.target.value)}
                 id="address"
                 type="text"
-                className="validate"
               />
-              <label htmlFor="address">Address</label>
             </div>
           </div>
 
           <div className="row">
             <div className="input-field col s8">
+              <label htmlFor="price">Price</label>
               <input
                 onChange={event => onPriceChange(event.target.value)}
                 id="price"
                 type="number"
-                className="validate"
               />
-              <label htmlFor="price">Price</label>
             </div>
           </div>
 
           <div className="row">
-            Start time: <DatePickerField />
-            End time: <DatePickerField />
+            Start time:<DatePickerStart onStartTimeChange={onStartTimeChange} />
+            End time:<DatePickerEnd onEndTimeChange={onEndTimeChange} />
           </div>
 
           <Link

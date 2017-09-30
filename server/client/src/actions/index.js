@@ -14,11 +14,13 @@ export const fetchUser = () => {
   };
 };
 
-export const createListing = (address, price) => {
-  const dataFromUser = { address, price };
+export const createListing = (address, price, startTime, endTime) => {
+  const dataFromUser = { address, price, startTime, endTime };
+  console.log(dataFromUser);
 
   return async dispatch => {
     const res = await axios.post("/api/create_listing", dataFromUser);
+    console.log(res);
 
     dispatch({ type: CREATE_LISTING, payload: res.data });
   };

@@ -3,7 +3,9 @@ import React from "react";
 const MarkerHours = props => {
   return (
     <div className="listing-hours">
-      <span>Hours:</span>
+      <span>
+        <strong>Hours:</strong>
+      </span>
       <div className="input-field inline">
         <input
           onChange={event => props.onInputChange(event.target.value)}

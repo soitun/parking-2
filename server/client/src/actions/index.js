@@ -19,8 +19,8 @@ export const fetchUser = () => {
   };
 };
 
-export const createListing = (lat, lng, price, startTime, endTime) => {
-  const dataFromUser = { lat, lng, price, startTime, endTime };
+export const createListing = (address, lat, lng, price, startTime, endTime) => {
+  const dataFromUser = { address, lat, lng, price, startTime, endTime };
 
   return async dispatch => {
     const res = await axios.post("/api/create_listing", dataFromUser);

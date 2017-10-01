@@ -8,6 +8,10 @@ const parkingSpotSchema = new Schema({
     require: true
   },
 
+  address: {
+    type: String
+  },
+
   lat: {
     type: Number
   },

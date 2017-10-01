@@ -36,6 +36,10 @@ class Dashboard extends Component {
     return this.props.listings
       .filter(listing => listing.booked === false)
       .map((listing, index) => {
+        // Because the InfoWindow component has some strong CSS bindings
+        // that prevent us from styling it properly (i.e. width).
+        const addressArr = listing.address.split(",");
+
         return (
           <Marker
             key={index}
@@ -45,7 +49,14 @@ class Dashboard extends Component {
             {props.isOpen && (
               <InfoWindow onCloseClick={props.onToggleOpen}>
                 <div>
-                  <div className="listing-price">Price: ${listing.price}/h</div>
+                  <div className="listing-address">
+                    <div>{addressArr[0]}</div>
+                    <div>{addressArr[1]}</div>
+                  </div>
+
+                  <div className="listing-price">
+                    <strong>Price:</strong> ${listing.price}/h
+                  </div>
 
                   <MarkerHours onInputChange={this.onInputChange} />
 
@@ -77,7 +88,7 @@ class Dashboard extends Component {
       ),
       withGoogleMap
     )(props => (
-      <GoogleMap defaultZoom={12} defaultCenter={{ lat: 25.703, lng: -80.334 }}>
+      <GoogleMap defaultZoom={12} defaultCenter={{ lat: 25.766, lng: -80.196 }}>
         {this.createMarkerInfoWindow(props)}
       </GoogleMap>
     ));

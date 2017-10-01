@@ -4,8 +4,11 @@ import * as actionCreators from "../actions";
 
 import ListingForm from "./ListingForm";
 
+// This Component is responsive for rendering the ListingForm component -
+// the actual form used to list a new parking spot.
 class CreateListing extends Component {
   state = {
+    address: "",
     lat: null,
     lng: null,
     price: null,
@@ -13,12 +16,8 @@ class CreateListing extends Component {
     endTime: null
   };
 
-  // onAddressChange = inputValue => {
-  //   this.setState({ address: inputValue });
-  // };
-
-  updateCoords = (lat, lng) => {
-    this.setState({ lat, lng });
+  updateCoordsAndAddress = (address, lat, lng) => {
+    this.setState({ address, lat, lng });
   };
 
   onPriceChange = inputValue => {
@@ -35,6 +34,7 @@ class CreateListing extends Component {
 
   onSubmit = () => {
     this.props.createListing(
+      this.state.address,
       this.state.lat,
       this.state.lng,
       this.state.price,
@@ -48,7 +48,7 @@ class CreateListing extends Component {
       <ListingForm
         onStartTimeChange={this.onStartTimeChange}
         onEndTimeChange={this.onEndTimeChange}
-        updateCoords={this.updateCoords}
+        updateCoordsAndAddress={this.updateCoordsAndAddress}
         onPriceChange={this.onPriceChange}
         onSubmit={this.onSubmit}
       />

@@ -21,7 +21,11 @@ class ListingForm extends Component {
       .then(results => getLatLng(results[0]))
       .then(data =>
         this.setState({ lat: data.lat, lng: data.lng }, () => {
-          this.props.updateCoords(this.state.lat, this.state.lng);
+          this.props.updateCoordsAndAddress(
+            this.state.address,
+            this.state.lat,
+            this.state.lng
+          );
         })
       )
       .catch(err => console.log(err));
@@ -78,7 +82,7 @@ class ListingForm extends Component {
 
           <div className="row">
             <Link
-              to="/"
+              to="/dashboard"
               onClick={onSubmit}
               style={{ marginBottom: "80px" }}
               className="waves-effect waves-light btn"

@@ -3,10 +3,11 @@ const ParkingSpot = mongoose.model("parkingspots");
 
 module.exports = app => {
   app.post("/api/create_listing", (req, res, next) => {
-    const { lat, lng, price, startTime, endTime } = req.body;
+    const { address, lat, lng, price, startTime, endTime } = req.body;
 
     const newSpot = new ParkingSpot({
       user: req.user._id,
+      address,
       lat,
       lng,
       price,

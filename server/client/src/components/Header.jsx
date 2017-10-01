@@ -44,7 +44,7 @@ class Header extends Component {
         <nav>
           <div className="nav-wrapper light-green darken-3">
             <Link to="/" className="left brand-logo logo-header">
-              Parking Finder
+              Pocket Park
             </Link>
 
             <ul className="right nav-links">{this.renderNavContent()}</ul>

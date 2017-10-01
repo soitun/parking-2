@@ -82,7 +82,7 @@ class ListingForm extends Component {
 
           <div className="row">
             <Link
-              to="/dashboard"
+              to="/"
               onClick={onSubmit}
               style={{ marginBottom: "80px" }}
               className="waves-effect waves-light btn"

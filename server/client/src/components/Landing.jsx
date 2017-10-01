@@ -9,7 +9,12 @@ const Landing = () => {
 
       <h3>Parking on Demand</h3>
 
-      <a className="orange waves-effect waves-light btn-large">Sign Up</a>
+      <a
+        href="/auth/google"
+        className="orange waves-effect waves-light btn-large"
+      >
+        Sign Up
+      </a>
     </div>
   );
 };

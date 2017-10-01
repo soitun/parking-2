@@ -17,7 +17,7 @@ class StripePayments extends Component {
 
     return (
       <StripeCheckout
-        name="PocketPark"
+        name="Pocket Park"
         description="Reserve this parking spot."
         amount={adjustedPrice}
         token={token => this.props.handleToken(token, listingId, adjustedPrice)}

@@ -15,6 +15,7 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 app.use(helmet());
+app.use(helmet.hidePoweredBy());
 
 // Wire up the body-parser middleware to handle incoming HTTP requests.
 app.use(bodyParser.json());

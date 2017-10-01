@@ -18,7 +18,7 @@ class StripePayments extends Component {
     return (
       <StripeCheckout
         name="PocketPark"
-        description="Reserve this parking plaza."
+        description="Reserve this parking spot."
         amount={adjustedPrice}
         token={token => this.props.handleToken(token, listingId, adjustedPrice)}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}

@@ -7,8 +7,14 @@ const Footer = () => {
         <div className="row">
           <div className="col l6 s12">
             <h6>About</h6>
-            <p>By Contribs</p>
-            <p>Legal line.</p>
+            <p>
+              List your own parking spot for others to rent during the hours you
+              don't need it. You can also search for other people's listings
+              around the city!
+            </p>
+            <p>
+              Built with <span role="img">🖤</span> in Miami, FL
+            </p>
           </div>
 
           <div className="col l4 offset-l2 s12">
@@ -33,7 +39,7 @@ const Footer = () => {
 
       <div className="footer-copyright">
         <div className="container">
-          © 2017 App Name
+          © 2017 PocketPark
           <a className="right" href="https://github.com/visionpoint/parking">
             View Project on GitHub
           </a>

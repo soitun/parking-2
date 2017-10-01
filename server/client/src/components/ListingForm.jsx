@@ -14,11 +14,9 @@ class ListingForm extends Component {
   handleSelect = address => {
     this.setState({ address });
 
-    // Geocode address in order to get to the lat and long.
+    // Geocode the address in order to get to the lat and lng.
     // We only want the first element in the array as it is likely the most
     // relevant result.
-
-    // set the state now for lat and long
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(data =>
@@ -37,6 +35,7 @@ class ListingForm extends Component {
       onSubmit
     } = this.props;
 
+    // inputProps are required for the PlacesAutocomplete component.
     const inputProps = {
       value: this.state.address,
       onChange: address => {

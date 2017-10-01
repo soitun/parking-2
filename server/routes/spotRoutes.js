@@ -24,4 +24,15 @@ module.exports = app => {
       res.send(newSpot);
     });
   });
+
+  app.get("/api/listings", (req, res, next) => {
+    ParkingSpot.find({}, (err, allSpots) => {
+      if (err) {
+        next(err);
+        return;
+      }
+
+      res.send(allSpots);
+    });
+  });
 };

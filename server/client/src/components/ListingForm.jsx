@@ -31,7 +31,6 @@ class ListingForm extends Component {
 
   render() {
     const {
-      // onAddressChange,
       onPriceChange,
       onStartTimeChange,
       onEndTimeChange,
@@ -47,40 +46,47 @@ class ListingForm extends Component {
 
     return (
       <div className="container">
+        <div style={{ marginTop: "50px", marginLeft: "-15px" }} className="row">
+          <h3 style={{ fontWeight: "300" }}>Enter Parking Details</h3>
+        </div>
+
         <form className="col s12">
-          <div className="row">
-            <div className="input-field col s8">
-              <label htmlFor="address">Address</label>
-              <PlacesAutocomplete
-                inputProps={inputProps}
-                onSelect={this.handleSelect}
-              />
-            </div>
+          <div style={{ paddingTop: "20px" }} className="row">
+            <label htmlFor="address">Address</label>
+            <PlacesAutocomplete
+              inputProps={inputProps}
+              onSelect={this.handleSelect}
+            />
+          </div>
+
+          <div style={{ marginBottom: "80px" }} className="row">
+            <label htmlFor="price">Price</label>
+            <input
+              onChange={event => onPriceChange(event.target.value)}
+              id="price"
+              type="number"
+              className="validate"
+            />
           </div>
 
           <div className="row">
-            <div className="input-field col s8">
-              <label htmlFor="price">Price</label>
-              <input
-                onChange={event => onPriceChange(event.target.value)}
-                id="price"
-                type="number"
-              />
-            </div>
+            <label>Start Time</label>
+            <DatePickerStart onStartTimeChange={onStartTimeChange} />
+
+            <label>End Time</label>
+            <DatePickerEnd onEndTimeChange={onEndTimeChange} />
           </div>
 
           <div className="row">
-            Start time:<DatePickerStart onStartTimeChange={onStartTimeChange} />
-            End time:<DatePickerEnd onEndTimeChange={onEndTimeChange} />
+            <Link
+              to="/"
+              onClick={onSubmit}
+              style={{ marginBottom: "80px" }}
+              className="waves-effect waves-light btn"
+            >
+              Submit
+            </Link>
           </div>
-
-          <Link
-            to="/"
-            onClick={onSubmit}
-            className="waves-effect waves-light btn"
-          >
-            Submit
-          </Link>
         </form>
       </div>
     );

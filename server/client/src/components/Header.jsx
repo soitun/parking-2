@@ -42,7 +42,7 @@ class Header extends Component {
     return (
       <header>
         <nav>
-          <div className="nav-wrapper teal lighten-2">
+          <div className="nav-wrapper light-green darken-3">
             <Link to="/" className="left brand-logo logo-header">
               Parking Finder
             </Link>

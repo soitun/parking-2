@@ -1,5 +1,10 @@
 import axios from "axios";
-import { FETCH_USER, LISTING_CREATED, ALL_LISTINGS } from "./types";
+import {
+  FETCH_USER,
+  LISTING_CREATED,
+  ALL_LISTINGS,
+  LISTING_RESERVED
+} from "./types";
 
 // Because we're returning a function from this Action Creator instead of
 // a normal Action, Redux Thunk will automatically call this function
@@ -29,5 +34,16 @@ export const fetchListings = () => {
     const res = await axios.get("/api/listings");
 
     dispatch({ type: ALL_LISTINGS, payload: res.data });
+  };
+};
+
+export const handleToken = (token, listingId, price) => {
+  const stripeFormData = { token, listingId, price };
+
+  return async dispatch => {
+    const res = await axios.post("/api/stripe", stripeFormData);
+    // console.log(res);
+
+    dispatch({ type: LISTING_RESERVED, payload: res.data });
   };
 };

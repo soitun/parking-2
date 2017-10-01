@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { compose, withProps, withStateHandlers } from "recompose";
+import { compose, withStateHandlers } from "recompose";
 import * as actionCreators from "../actions";
+import StripePayments from "./StripePayments";
 import {
   withGoogleMap,
   GoogleMap,
@@ -24,21 +25,33 @@ class Dashboard extends Component {
 
     // Map over all listings fetched from the db, and create a Marker and
     // InfoWindow components for each.
-    return this.props.listings.map((listing, index) => {
-      return (
-        <Marker
-          key={index}
-          position={{ lat: listing.lat, lng: listing.lng }}
-          onClick={props.onToggleOpen}
-        >
-          {props.isOpen && (
-            <InfoWindow onCloseClick={props.onToggleOpen}>
-              <span>{listing.price}</span>
-            </InfoWindow>
-          )}
-        </Marker>
-      );
-    });
+    return this.props.listings
+      .filter(listing => listing.booked === false)
+      .map((listing, index) => {
+        return (
+          <Marker
+            key={index}
+            position={{ lat: listing.lat, lng: listing.lng }}
+            onClick={props.onToggleOpen}
+          >
+            {props.isOpen && (
+              <InfoWindow onCloseClick={props.onToggleOpen}>
+                <div>
+                  <div style={{ marginBottom: "10px" }}>
+                    Price: ${listing.price}
+                  </div>
+                  <div>
+                    <StripePayments
+                      listingId={listing._id}
+                      price={listing.price}
+                    />
+                  </div>
+                </div>
+              </InfoWindow>
+            )}
+          </Marker>
+        );
+      });
   };
 
   render() {

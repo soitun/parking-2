@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const keys = require("./config/keys");
 require("./models/User");
-require("./models/ParkingSpot")
+require("./models/ParkingSpot");
 require("./services/passport");
 
 mongoose.Promise = global.Promise;
@@ -37,6 +37,8 @@ app.use(passport.session());
 // one argument, we immediately invoke this function passing the app object.
 require("./routes/authRoutes")(app);
 require("./routes/spotRoutes")(app);
+require("./routes/billingRoutes")(app);
+
 // This code is only run in production. Order of operations matters!
 // NODE_ENV is automatically set by the hosting service (i.e. Heroku).
 // The idea is that some requests can be answered by the Express server,

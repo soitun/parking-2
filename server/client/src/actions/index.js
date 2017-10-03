@@ -42,7 +42,6 @@ export const handleToken = (token, listingId, price) => {
 
   return async dispatch => {
     const res = await axios.post("/api/stripe", stripeFormData);
-    // console.log(res);
 
     dispatch({ type: LISTING_RESERVED, payload: res.data });
   };

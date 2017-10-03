@@ -15,6 +15,10 @@ main {
   margin-left: 40px;
 }
 
+.nav-wrapper-color {
+  background-color: #1db954;
+}
+
 .nav-links {
   margin-right: 40px;
 }
@@ -72,7 +76,7 @@ main {
 
 /*Landing Page Element*/
 
-/*Jumbotron background and general children styling*/
+/* Jumbotron background and general children styling */
 #jumbotron {
   position: relative;
   background: url("./images/landing-bg.jpg");
@@ -110,6 +114,15 @@ main {
   height: inherit;
   z-index: 0;
   width: 100%;
+}
+
+/* Sign up button on Landing page  */
+.landing-btn-color {
+  background-color: #f77f83;
+}
+
+.landing-btn-color:hover {
+  background-color: #f5728a;
 }
 /* ****************************************************** */
 

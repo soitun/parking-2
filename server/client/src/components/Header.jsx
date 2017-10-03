@@ -42,7 +42,7 @@ class Header extends Component {
     return (
       <header>
         <nav>
-          <div className="nav-wrapper light-green darken-3">
+          <div className="nav-wrapper nav-wrapper-color">
             <Link to="/" className="left brand-logo logo-header">
               Pocket Park
             </Link>

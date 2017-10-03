@@ -11,7 +11,7 @@ const Landing = () => {
 
       <a
         href="/auth/google"
-        className="orange waves-effect waves-light btn-large"
+        className="waves-effect waves-light btn-large landing-btn-color"
       >
         Sign Up
       </a>

@@ -5,6 +5,8 @@ module.exports = app => {
   app.post("/api/create_listing", (req, res, next) => {
     const { address, lat, lng, price, startTime, endTime } = req.body;
 
+    // We use ES6's enhanced object literals to avoid repeating the
+    // same key-value pairs, i.e. address: address
     const newSpot = new ParkingSpot({
       user: req.user._id,
       address,

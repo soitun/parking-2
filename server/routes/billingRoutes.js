@@ -9,7 +9,7 @@ module.exports = app => {
   app.post("/api/stripe", async (req, res) => {
     const { token, listingId, price } = req.body;
 
-    // Create the actual charge and bill the user's credit card.
+    // Create the actual charge and bill the user's card.
     const charge = await stripe.charges.create({
       amount: price,
       currency: "usd",
@@ -17,15 +17,15 @@ module.exports = app => {
       source: token.id
     });
 
+    // We pass an option of { new: true } to return the
+    // updated record instead of the previous one.
     const updatedSpot = await ParkingSpot.findOneAndUpdate(
       { _id: listingId },
       { $set: { booked: true } },
       { new: true }
     );
 
-    console.log(updatedSpot);
-
-    // Send the updated user model back to whoever made the request.
+    // Send the updated ParkingSpot model back to the client.
     res.send(updatedSpot);
   });
 };

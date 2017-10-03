@@ -20,6 +20,7 @@ class Dashboard extends Component {
     this.props.fetchListings();
   }
 
+  // This method is currently disabled.
   onInputChange = value => {
     this.setState({ totalPrice: value });
   };
